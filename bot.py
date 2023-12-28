@@ -1,6 +1,7 @@
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
-from aiogram.types import Message
+from aiogram.types import Message, ContentType
+from aiogram import F
 
 BOT_TOKEN = '5871731399:AAESNUPD2ZXDUgSi4-fwtL-3R0mWYQmmKTM'
 
@@ -20,9 +21,16 @@ async def help_command(message: Message) -> None:
     )
 
 async def send_echo(message: Message) -> None:
-    await message.reply(
-        text=message.text
-    )
+    try:
+        await message.send_copy(
+            chat_id=message.chat.id
+        )
+    except TypeError:
+        await message.reply(
+            text='Данный тип апдейтов не поддерживается'
+            'методом send_copy'
+        )
+
 
 
 dp.message.register(start_command, Command(commands=['start']))
