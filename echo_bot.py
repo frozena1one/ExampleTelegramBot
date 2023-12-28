@@ -5,7 +5,7 @@ from aiogram import F
 
 BOT_TOKEN = '5871731399:AAESNUPD2ZXDUgSi4-fwtL-3R0mWYQmmKTM'
 
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token='BOT_TOKEN here')
 dp = Dispatcher()
 
 
